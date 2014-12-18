@@ -1,14 +1,17 @@
 package se.eneroth.hello;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class App {
-    public static void main( String[] args ) {
+    public static void main( String[] args ) throws Exception {
         System.out.println( "Hello World!" );
         new App().array();
         new App().array2();
+        new App().writeFile();
+        new App().readFile();
     }
 
     public int add(int tal1, int tal2) {
@@ -42,6 +45,42 @@ public class App {
 
         for (Object aList : list) {
             System.out.println(aList);
+        }
+    }
+
+    // Write to file
+    public void writeFile() throws Exception{
+        String content = "This is the content to write into file";
+
+        File file = new File("c:/temp/filename.txt");
+
+        // if file doesnt exists, then create it
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
+        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(content);
+        bw.close();
+    }
+
+    // Read from file
+    public void readFile() throws Exception {
+        BufferedReader br = new BufferedReader(new FileReader("c:/temp/filename.txt"));
+        try {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+            while (line != null) {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+            }
+            String everything = sb.toString();
+            System.out.println(everything);
+        } finally {
+            br.close();
         }
     }
  }
