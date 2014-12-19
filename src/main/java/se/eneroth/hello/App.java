@@ -12,9 +12,10 @@ public class App {
     private static final Logger logger = LogManager.getLogger(App.class);
 
     public static void main( String[] args ) throws Exception {
-        //logger.debug("Hello this is an debug message");
-        //logger.info("Hello this is an info message");
-        logger.error("Hello this is an error message");
+        logger.debug("Hello world - debug log");
+        logger.info("Hello world - info log");
+        logger.warn("Hello world - warn log");
+        logger.error("Hello world - error log");
 
         System.out.println( "Hello World!" );
         App app = new App();
