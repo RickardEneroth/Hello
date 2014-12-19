@@ -30,4 +30,23 @@ public class AppTest {
         String str = "UPPER";
         assertEquals(app.up("upper"), str);
     }
+
+    @Test
+    public void test_exception() {
+        try {
+            app.addWithException(1, -6);
+        } catch (NegativeException e) {
+            assertEquals(e.getMessage(), "Minst ett av talen verkar vara negativt!");
+        }
+    }
+
+    @Test
+    public void test_exception_ok() {
+        try {
+            int result = app.addWithException(1, 6);
+            assertEquals(7, result);
+        } catch (NegativeException e) {
+            assertEquals(e.getMessage(), "Minst ett av talen verkar vara negativt!");
+        }
+    }
 }

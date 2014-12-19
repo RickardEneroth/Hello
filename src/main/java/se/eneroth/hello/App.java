@@ -24,6 +24,7 @@ public class App {
         app.writeFile();
         app.readFile();
         app.readProperties();
+        System.out.println(app.addWithException(1, 6));
     }
 
     public int add(int tal1, int tal2) {
@@ -105,11 +106,19 @@ public class App {
         System.out.println("datornamn=" + prop.getProperty("datornamn"));
     }
 
+    //add with exception
+    public int addWithException(int tal1, int tal2) throws NegativeException {
+        if (tal1 < 0 || tal2 <0) {
+            throw new NegativeException("Minst ett av talen verkar vara negativt!");
+        }
+        return tal1 + tal2;
+    }
+
     //TODO
     /*
-    eget exception
     mockito
     
     */
-    
+
+
  }
