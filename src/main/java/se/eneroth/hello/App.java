@@ -1,12 +1,20 @@
 package se.eneroth.hello;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class App {
+    private static final Logger logger = LogManager.getLogger(App.class);
+
     public static void main( String[] args ) throws Exception {
+        //logger.debug("Hello this is an debug message");
+        //logger.info("Hello this is an info message");
+        logger.error("Hello this is an error message");
+
         System.out.println( "Hello World!" );
         new App().array();
         new App().array2();
