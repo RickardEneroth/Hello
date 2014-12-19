@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 
 public class App {
     private static final Logger logger = LogManager.getLogger(App.class);
@@ -16,10 +17,12 @@ public class App {
         logger.error("Hello this is an error message");
 
         System.out.println( "Hello World!" );
-        new App().array();
-        new App().array2();
-        new App().writeFile();
-        new App().readFile();
+        App app = new App();
+        app.array();
+        app.array2();
+        app.writeFile();
+        app.readFile();
+        app.readProperties();
     }
 
     public int add(int tal1, int tal2) {
@@ -91,13 +94,20 @@ public class App {
             br.close();
         }
     }
-    
+
+    //Properties
+    public void readProperties() throws IOException {
+        Properties prop = new Properties();
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        InputStream stream = loader.getResourceAsStream("App.properties");
+        prop.load(stream);
+        System.out.println("datornamn=" + prop.getProperty("datornamn"));
+    }
+
     //TODO
     /*
     eget exception
     mockito
-    log4j
-    properties
     
     */
     
