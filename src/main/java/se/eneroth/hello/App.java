@@ -83,4 +83,14 @@ public class App {
             br.close();
         }
     }
+    
+    //TODO
+    /*
+    eget exception
+    mockito
+    log4j
+    properties
+    
+    */
+    
  }
