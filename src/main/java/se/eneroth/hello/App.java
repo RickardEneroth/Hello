@@ -97,7 +97,7 @@ public class App {
         }
     }
 
-    //Properties
+    // Properties
     public void readProperties() throws IOException {
         Properties prop = new Properties();
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
@@ -106,19 +106,11 @@ public class App {
         System.out.println("datornamn=" + prop.getProperty("datornamn"));
     }
 
-    //add with exception
+    // Add with exception
     public int addWithException(int tal1, int tal2) throws NegativeException {
         if (tal1 < 0 || tal2 <0) {
             throw new NegativeException("Minst ett av talen verkar vara negativt!");
         }
         return tal1 + tal2;
     }
-
-    //TODO
-    /*
-    mockito
-    
-    */
-
-
  }
