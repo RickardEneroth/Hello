@@ -2,6 +2,11 @@ package se.eneroth.hello;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,8 +28,9 @@ public class App {
         app.array2();
         app.writeFile();
         app.readFile();
-        app.readProperties();
+        //app.readProperties();
         System.out.println(app.addWithException(1, 6));
+        app.readFromDB();
     }
 
     public int add(int tal1, int tal2) {
@@ -112,5 +118,18 @@ public class App {
             throw new NegativeException("Minst ett av talen verkar vara negativt!");
         }
         return tal1 + tal2;
+    }
+
+    // Hibernate
+    public void readFromDB() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistenceUnit");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        List<Flower> result = entityManager.createQuery( "from Flower").getResultList();
+        for ( Flower flower : result ) {
+            System.out.println( "Flower (" + flower.getName() + ") : " + flower.getLatinName() );
+        }
+        entityManager.getTransaction().commit();
+        entityManager.close();
     }
  }
