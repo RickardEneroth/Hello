@@ -2,6 +2,8 @@ package se.eneroth.hello;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import se.eneroth.hello.exception.NegativeException;
+import se.eneroth.hello.model.Flower;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -28,7 +30,7 @@ public class App {
         app.array2();
         app.writeFile();
         app.readFile();
-        //app.readProperties();
+        app.readProperties();
         System.out.println(app.addWithException(1, 6));
         app.readFromDB();
     }
@@ -106,9 +108,7 @@ public class App {
     // Properties
     public void readProperties() throws IOException {
         Properties prop = new Properties();
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        InputStream stream = loader.getResourceAsStream("App.properties");
-        prop.load(stream);
+        prop.load(new FileInputStream("app.properties"));
         System.out.println("datornamn=" + prop.getProperty("datornamn"));
     }
 
@@ -127,7 +127,7 @@ public class App {
         entityManager.getTransaction().begin();
         List<Flower> result = entityManager.createQuery( "from Flower").getResultList();
         for ( Flower flower : result ) {
-            System.out.println( "Flower (" + flower.getName() + ") : " + flower.getLatinName() );
+            System.out.println( "Flower: " + flower.getId() + " " + flower.getName() + " " + flower.getLatinName() );
         }
         entityManager.getTransaction().commit();
         entityManager.close();

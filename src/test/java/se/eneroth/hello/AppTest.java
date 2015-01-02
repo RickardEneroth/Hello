@@ -3,6 +3,7 @@ package se.eneroth.hello;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import se.eneroth.hello.exception.NegativeException;
 
 import java.util.ArrayList;
 import java.util.List;

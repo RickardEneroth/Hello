@@ -1,4 +1,4 @@
-package se.eneroth.hello;
+package se.eneroth.hello.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

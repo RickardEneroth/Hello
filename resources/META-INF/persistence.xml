@@ -4,7 +4,7 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
     <persistence-unit name="persistenceUnit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>se.eneroth.hello.Flower</class>
+        <class>se.eneroth.hello.model.Flower</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>

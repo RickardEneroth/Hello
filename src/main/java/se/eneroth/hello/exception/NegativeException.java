@@ -1,4 +1,4 @@
-package se.eneroth.hello;
+package se.eneroth.hello.exception;
 
 /**
  * Created by Rickard on 2014-12-19.

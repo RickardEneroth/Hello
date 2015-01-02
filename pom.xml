@@ -8,10 +8,6 @@
     <name>Hello</name>
     <url>http://maven.apache.org</url>
 
-    <properties>
-        <hibernate.version>4.3.6.Final</hibernate.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
