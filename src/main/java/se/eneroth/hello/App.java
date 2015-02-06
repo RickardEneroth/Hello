@@ -10,10 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 public class App {
     private static final Logger logger = LogManager.getLogger(App.class);
@@ -32,7 +29,9 @@ public class App {
         app.readFile();
         app.readProperties();
         System.out.println(app.addWithException(1, 6));
-        app.readFromDB();
+        //app.readFromDB();
+        app.closureTest1();
+        app.closureTest2();
     }
 
     public int add(int tal1, int tal2) {
@@ -132,4 +131,24 @@ public class App {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
- }
+
+    // Closures
+    public void closureTest1() {
+        new Thread(
+                () -> System.out.println("Hello from thread")
+        ).start();
+    }
+
+    // Closures
+    public void closureTest2() {
+        //Old way:
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
+        for (Integer n : list) {
+            System.out.println(n);
+        }
+
+        //New way:
+        List<Integer> list2 = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
+        list2.forEach(n -> System.out.println(n));
+    }
+}
