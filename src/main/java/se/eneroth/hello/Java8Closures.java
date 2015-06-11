@@ -44,6 +44,7 @@ public class Java8Closures {
         }
     }
 
+
     // Closures
     public void closureTest3() {
         Person p1 = new Person();
