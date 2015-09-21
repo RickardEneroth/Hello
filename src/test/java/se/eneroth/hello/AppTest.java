@@ -54,6 +54,12 @@ public class AppTest {
     }
 
     @Test
+    public void testa2() {
+        System.out.println("Testar2...");
+        assertEquals(57, 57);
+    }
+
+    @Test
     public void test_add() {
         int result = app.add(7, 8);
         assertEquals(result, 15);
